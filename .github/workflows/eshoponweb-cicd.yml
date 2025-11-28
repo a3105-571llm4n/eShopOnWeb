@@ -6,11 +6,11 @@ on:
   workflow_dispatch:
 # Environment variables used across jobs
 env:
-  RESOURCE-GROUP: 'rg-eshoponweb-NAME' # Replace NAME with your unique identifier
+  RESOURCE-GROUP: 'rg-eshoponweb-620U' # Replace NAME with your unique identifier
   LOCATION: 'centralus' # Choose your Azure region
   TEMPLATE-FILE: '${{ github.workspace }}/infra/webapp.bicep'
   SUBSCRIPTION-ID: '503ef2e2-c5c8-42d6-ade8-56ded9b89fab' # Replace with your subscription ID
-  WEBAPP-NAME: 'eshoponweb934617' # Replace NAME with unique identifier (lowercase, no spaces)
+  WEBAPP-NAME: 'eshoponweb-zumbo' # Replace NAME with unique identifier (lowercase, no spaces)
 jobs:
   # Build and test job
   buildandtest:
@@ -72,10 +72,10 @@ jobs:
         uses: azure/arm-deploy@v2
         id: deploy-infra
         with:
-          subscriptionId: ${{ env. SUBSCRIPTION-ID}}
-          resourceGroupName: ${{ env.RESOURCEGROUP}}
+          subscriptionId: ${{ env.SUBSCRIPTION-ID }}
+          resourceGroupName: ${{ env.RESOURCE-GROUP }}
           template: infra/webapp.bicep
-          parameters: webAppName=${{ env.WEBAPP }} location=${{ env.LOCATION }}
+          parameters: webAppName=${{ env.WEBAPP-NAME }} location=${{ env.LOCATION }}
           failOnStdErr: false
       # ✅ Deploy app to Azure Web App
       - name: Deploy to Azure Web App

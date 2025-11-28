@@ -72,10 +72,10 @@ jobs:
         uses: azure/arm-deploy@v2
         id: deploy-infra
         with:
-          subscriptionId: ${{ env. 503ef2e2-c5c8-42d6-ade8-56ded9b89fab}}
-          resourceGroupName: ${{ env.rg-eshoponweb-620U}}
+          subscriptionId: ${{ env. SUBSCRIPTION-ID}}
+          resourceGroupName: ${{ env.RESOURCEGROUP}}
           template: infra/webapp.bicep
-          parameters: webAppName=${{ env.eshoponweb934617 }} location=${{ env.centralus }}
+          parameters: webAppName=${{ env.WEBAPP }} location=${{ env.LOCATION }}
           failOnStdErr: false
       # ✅ Deploy app to Azure Web App
       - name: Deploy to Azure Web App
